@@ -2,7 +2,7 @@
 
 class connection{
 	private $db_server = "localhost";
-	private $db_name = "admin_pia";
+	private $db_name = "friend_of_pia";
 	private $db_username = "root";
 	private $db_password = "";
 	public $my_connection;
