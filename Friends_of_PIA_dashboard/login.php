@@ -1,9 +1,39 @@
+<?php require_once("includes/classes/connection.php"); ?>
+<?php require_once("includes/classes/user.php"); ?>
+<?php
+$user = new user();
+$user->session();
+$connection = new connection();
+$connection->connect();
+if($user->logged_in()){
+        $user->redirect_to("index.php");
+    }
+
+if(isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if($username == "" || $password == ""){
+        $message = "Login is required";
+    }else{
+        $login = $user->check_login($connection->my_connection,$username,$password);
+        if($login){
+            echo $_SESSION['username'];
+            $user->redirect_to("index.php");
+        }else{
+            $message = "Incorrect username or password";
+        }
+    }
+}else{
+    $username = "";
+    $password = "";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   
 <head>
     <meta charset="utf-8">
-    <title>Login - Bootstrap Admin Template</title>
+    <title>Login - Admin</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> 
@@ -33,31 +63,9 @@
 				<span class="icon-bar"></span>
 			</a>
 			
-			<a class="brand" href="index.html">
+			<a class="brand">
 				Friends of PIA Admin Panel				
-			</a>		
-			
-			<div class="nav-collapse">
-				<ul class="nav pull-right">
-					
-					<!--<li class="">						
-						<a href="signup.html" class="">
-							Don't have an account?
-						</a>
-						
-					</li>
-					-->
-					<li class="">						
-						<a href="index.html" class="">
-							<i class="icon-chevron-left"></i>
-							Back to Homepage
-						</a>
-						
-					</li>
-				</ul>
-				
-			</div><!--/.nav-collapse -->	
-	
+			</a>					
 		</div> <!-- /container -->
 		
 	</div> <!-- /navbar-inner -->
@@ -70,9 +78,9 @@
 	
 	<div class="content clearfix">
 		
-		<form action="#" method="post">
+		<form action="login.php" method="post">
 		
-			<h1>Member Login</h1>		
+			<h1>Admin Login</h1>		
 			
 			<div class="login-fields">
 				
@@ -92,12 +100,12 @@
 			
 			<div class="login-actions">
 				
-				<span class="login-checkbox">
+				<!--<span class="login-checkbox">
 					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
 					<label class="choice" for="Field">Keep me signed in</label>
-				</span>
+				</span> -->
 									
-				<button class="button btn btn-success btn-large">Sign In</button>
+				<button class="button btn btn-success btn-large" name="submit">Sign In</button>
 				
 			</div> <!-- .actions -->
 			
@@ -111,9 +119,9 @@
 
 
 
-<div class="login-extra">
+<!--<div class="login-extra">
 	<a href="#">Reset Password</a>
-</div> <!-- /login-extra -->
+</div>--> <!-- /login-extra -->
 
 
 <script src="js/jquery-1.7.2.min.js"></script>
