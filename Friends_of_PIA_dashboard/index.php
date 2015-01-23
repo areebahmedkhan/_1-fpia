@@ -31,7 +31,7 @@ $user->confirm_logged_in();
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Friends of PIA Admin Panel	 </a>
+                    class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.php">Friends of PIA Admin Panel	 </a>
       <div class="nav-collapse">
         <ul class="nav pull-right">
          <!-- <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -65,9 +65,9 @@ $user->confirm_logged_in();
     <div class="container">
       <ul class="mainnav">
         <li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
-        <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
-        <li><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+        <li><a href="reports.php"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
+        <li><a href="guidely.php"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
+        <li><a href="charts.php"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
         <!--<li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -363,7 +363,7 @@ $user->confirm_logged_in();
 <!-- /main -->
 <div class="extra">
   <div class="extra-inner">
-    <div class="container">
+    <!--<div class="container">
       <div class="row">
                     <div class="span3">
                         <h4>
@@ -376,7 +376,7 @@ $user->confirm_logged_in();
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                   <!--<div class="span3">
                         <h4>
                             Support</h4>
                         <ul>
@@ -387,7 +387,7 @@ $user->confirm_logged_in();
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                    <!--<div class="span3">
                         <h4>
                             Something Legal</h4>
                         <ul>
@@ -397,7 +397,7 @@ $user->confirm_logged_in();
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                    <!--<div class="span3">
                         <h4>
                             Open Source jQuery Plugins</h4>
                         <ul>
@@ -408,9 +408,9 @@ $user->confirm_logged_in();
                         </ul>
                     </div>
                     <!-- /span3 -->
-                </div>
+               <!-- </div>
       <!-- /row --> 
-    </div>
+    <!--</div>-->
     <!-- /container --> 
   </div>
   <!-- /extra-inner --> 
@@ -421,6 +421,9 @@ $user->confirm_logged_in();
     <div class="container">
       <div class="row">
         <div class="span12"> &copy; 2015 <a href="http://www.piac.com.pk/" target="_blank">Pakistan International Airline</a>. </div>
+        <div style="float:right;" >
+                      Developed by : <a href="http://www.spectrumyr.com/" target="_blank">Spectrum Y&amp;R</a>
+                    </div>
         <!-- /span12 --> 
       </div>
       <!-- /row --> 

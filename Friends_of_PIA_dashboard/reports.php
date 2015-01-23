@@ -1,9 +1,19 @@
+<?php require_once("includes/classes/connection.php"); ?>
+<?php require_once("includes/classes/user.php"); ?>
+<?php
+$user = new user();
+$user->session();
+$connection = new connection();
+$connection->connect();
+$user->confirm_logged_in();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
  <head>
     <meta charset="utf-8">
-    <title>Reports - Bootstrap Admin Template</title>
+    <title>Reports - Admin </title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,13 +49,13 @@
 				<span class="icon-bar"></span>
 			</a>
 			
-			<a class="brand" href="index.html">
-				Bootstrap Admin Template				
+			<a class="brand" href="index.php">
+				Friends of PIA Admin Panel				
 			</a>		
 			
 			<div class="nav-collapse">
 				<ul class="nav pull-right">
-					<li class="dropdown">						
+					<!--<li class="dropdown">						
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-cog"></i>
 							Account
@@ -56,18 +66,18 @@
 							<li><a href="javascript:;">Settings</a></li>
 							<li><a href="javascript:;">Help</a></li>
 						</ul>						
-					</li>
+					</li>-->
 			
 					<li class="dropdown">						
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="icon-user"></i> 
-							EGrappler.com
+							Admin
 							<b class="caret"></b>
 						</a>
 						
 						<ul class="dropdown-menu">
 							<li><a href="javascript:;">Profile</a></li>
-							<li><a href="javascript:;">Logout</a></li>
+							<li><a href="javascript:;"><?php if($user->logged_in()){ echo '<a href="logout.php">Logout</a>'; }?></a></li>
 						</ul>						
 					</li>
 				</ul>
@@ -97,7 +107,7 @@
 			<ul class="mainnav">
 			
 				<li>
-					<a href="index.html">
+					<a href="index.php">
 						<i class="icon-dashboard"></i>
 						<span>Dashboard</span>
 					</a>	    				
@@ -106,14 +116,14 @@
 				
 				
 				<li class="active">
-					<a href="reports.html">
+					<a href="reports.php">
 						<i class="icon-list-alt"></i>
 						<span>Reports</span>
 					</a>    				
 				</li>
 				
 				<li>					
-					<a href="guidely.html">
+					<a href="guidely.php">
 						<i class="icon-facetime-video"></i>
 						<span>App Tour</span>
 					</a>  									
@@ -121,15 +131,15 @@
                 
                 
                 <li>					
-					<a href="charts.html">
+					<a href="charts.php">
 						<i class="icon-bar-chart"></i>
 						<span>Charts</span>
 					</a>  									
 				</li>
                 
                 
-                <li>					
-					<a href="shortcodes.html">
+               <!-- <li>					
+					<a href="shortcodes.php">
 						<i class="icon-code"></i>
 						<span>Shortcodes</span>
 					</a>  									
@@ -143,14 +153,14 @@
 					</a>	
 				
 					<ul class="dropdown-menu">
-                    	<li><a href="icons.html">Icons</a></li>
-						<li><a href="faq.html">FAQ</a></li>
-                        <li><a href="pricing.html">Pricing Plans</a></li>
-                        <li><a href="login.html">Login</a></li>
-						<li><a href="signup.html">Signup</a></li>
-						<li><a href="error.html">404</a></li>
+                    	<li><a href="icons.php">Icons</a></li>
+						<li><a href="faq.php">FAQ</a></li>
+                        <li><a href="pricing.php">Pricing Plans</a></li>
+                        <li><a href="login.php">Login</a></li>
+						<li><a href="signup.php">Signup</a></li>
+						<li><a href="error.php">404</a></li>
                     </ul>    				
-				</li>
+				</li>-->
 			
 			</ul>
 
@@ -267,9 +277,8 @@
 
 	<div class="extra-inner">
 
-		<div class="container">
-
-			<div class="row">
+		<!--<div class="container">
+      <div class="row">
                     <div class="span3">
                         <h4>
                             About Free Admin Template</h4>
@@ -281,7 +290,7 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                   <!--<div class="span3">
                         <h4>
                             Support</h4>
                         <ul>
@@ -292,7 +301,7 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                    <!--<div class="span3">
                         <h4>
                             Something Legal</h4>
                         <ul>
@@ -302,7 +311,7 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                    <!--<div class="span3">
                         <h4>
                             Open Source jQuery Plugins</h4>
                         <ul>
@@ -313,9 +322,9 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                </div> <!-- /row -->
-
-		</div> <!-- /container -->
+               <!-- </div>
+      <!-- /row --> 
+    <!--</div>-->
 
 	</div> <!-- /extra-inner -->
 
@@ -334,7 +343,11 @@
 				
     			<div class="span12">
     				&copy; 2015 <a href="http://www.piac.com.pk/" target="_blank">Pakistan International Airline</a>.
-    			</div> <!-- /span12 -->
+    			
+    			</div>
+    			<div style="float:right;" >
+                      Developed by : <a href="http://www.spectrumyr.com/" target="_blank">Spectrum Y&amp;R</a>
+                    </div> <!-- /span12 -->
     			
     		</div> <!-- /row -->
     		

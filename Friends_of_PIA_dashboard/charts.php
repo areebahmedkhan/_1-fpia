@@ -1,8 +1,18 @@
+<?php require_once("includes/classes/connection.php"); ?>
+<?php require_once("includes/classes/user.php"); ?>
+<?php
+$user = new user();
+$user->session();
+$connection = new connection();
+$connection->connect();
+$user->confirm_logged_in();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Charts - Bootstrap Admin Template</title>
+    <title>Charts - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,21 +33,21 @@
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </a><a class="brand" href="index.html">Bootstrap Admin Template </a>
+                </a><a class="brand" href="index.php">Friends of PIA Admin Panel   </a>
                 <div class="nav-collapse">
                     <ul class="nav pull-right">
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                        <!--<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                             class="icon-cog"></i> Account <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:;">Settings</a></li>
                                 <li><a href="javascript:;">Help</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                            class="icon-user"></i> EGrappler.com <b class="caret"></b></a>
+                            class="icon-user"></i> Admin <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:;">Profile</a></li>
-                                <li><a href="javascript:;">Logout</a></li>
+                                <li><a href="javascript:;"><?php if($user->logged_in()){ echo '<a href="logout.php">Logout</a>'; }?></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -56,15 +66,15 @@
         <div class="subnavbar-inner">
             <div class="container">
                 <ul class="mainnav">
-                    <li><a href="index.html"><i class="icon-dashboard"></i><span>Dashboard</span> </a>
+                    <li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span> </a>
                     </li>
-                    <li><a href="reports.html"><i class="icon-list-alt"></i><span>Reports</span> </a>
+                    <li><a href="reports.php"><i class="icon-list-alt"></i><span>Reports</span> </a>
                     </li>
-                    <li><a href="guidely.html"><i class="icon-facetime-video"></i><span>App Tour</span>
+                    <li><a href="guidely.php"><i class="icon-facetime-video"></i><span>App Tour</span>
                     </a></li>
-                    <li class="active"><a href="charts.html"><i class="icon-bar-chart"></i><span>Charts</span> </a>
+                    <li class="active"><a href="charts.php"><i class="icon-bar-chart"></i><span>Charts</span> </a>
                     </li>
-                    <li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a>
+                    <!--<li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a>
                     </li>
                     <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
@@ -76,7 +86,7 @@
                             <li><a href="signup.html">Signup</a></li>
                             <li><a href="error.html">404</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
             <!-- /container -->
@@ -179,8 +189,8 @@
     <!-- /main -->
     <div class="extra">
         <div class="extra-inner">
-            <div class="container">
-                <div class="row">
+            <!--<div class="container">
+      <div class="row">
                     <div class="span3">
                         <h4>
                             About Free Admin Template</h4>
@@ -192,7 +202,7 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                   <!--<div class="span3">
                         <h4>
                             Support</h4>
                         <ul>
@@ -203,7 +213,7 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                    <!--<div class="span3">
                         <h4>
                             Something Legal</h4>
                         <ul>
@@ -213,7 +223,7 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                    <div class="span3">
+                    <!--<div class="span3">
                         <h4>
                             Open Source jQuery Plugins</h4>
                         <ul>
@@ -224,10 +234,9 @@
                         </ul>
                     </div>
                     <!-- /span3 -->
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
+               <!-- </div>
+      <!-- /row --> 
+    <!--</div>-->
         </div>
         <!-- /extra-inner -->
     </div>
@@ -237,7 +246,10 @@
             <div class="container">
                 <div class="row">
                     <div class="span12">
-                        &copy; 2015 <a href="http://www.piac.com.pk/" target="_blank">Pakistan International Airline</a>.
+                       All Rights Reserved &copy; 2015 <a href="http://www.piac.com.pk/" target="_blank">Pakistan International Airline</a>.
+                    </div>
+                    <div style="float:right;" >
+                      Developed by : <a href="http://www.spectrumyr.com/" target="_blank">Spectrum Y&amp;R</a>
                     </div>
                     <!-- /span12 -->
                 </div>
