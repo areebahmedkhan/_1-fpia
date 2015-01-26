@@ -217,7 +217,6 @@ $query = new query();
          </div>      
 	      	
 	  	  <!-- /row -->
-	
 	      <div class="row">
 	      	
 	      	<div class="span6">
@@ -226,10 +225,10 @@ $query = new query();
 						
 					<div class="widget-header">
 						<i class="icon-star"></i>
-						<h3>Some Stats</h3>
+						<h3>Rating %</h3>
 					</div> <!-- /widget-header -->
 					
-					<div class="widget-content">
+					<div class="widget-content"><ul><li style="color:#F38630; font-size: 20px;";><b>Happy</b></li><br><li style="color:#E0E4CC; font-size: 20px;";>Average</li><br><li style="color:#69D2E7; font-size: 20px;";>Sad</li></ul>
 						<canvas id="pie-chart" class="chart-holder" height="250" width="538"></canvas>
 					</div> <!-- /widget-content -->
 						
@@ -247,7 +246,7 @@ $query = new query();
 							
 					<div class="widget-header">
 						<i class="icon-list-alt"></i>
-						<h3>Another Chart</h3>
+						<h3>Total Monthly Feedbacks</h3>
 					</div> <!-- /widget-header -->
 					
 					<div class="widget-content">
@@ -358,7 +357,9 @@ $query = new query();
 	</div> <!-- /footer-inner -->
 	
 </div> <!-- /footer -->
-    
+  
+
+
 
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/excanvas.min.js"></script>
@@ -369,15 +370,15 @@ $query = new query();
 
     var pieData = [
 				{
-				    value: 60,
+				    value: <?php echo $query->happy($connection->my_connection); ?>,
 				    color: "#F38630"
 				},
 				{
-				    value: 20,
+				    value: <?php echo $query->average($connection->my_connection); ?>,
 				    color: "#E0E4CC"
 				},
 				{
-				    value: 20,
+				    value: <?php echo $query->sad($connection->my_connection); ?>,
 				    color: "#69D2E7"
 				}
 
@@ -386,26 +387,60 @@ $query = new query();
     var myPie = new Chart(document.getElementById("pie-chart").getContext("2d")).Pie(pieData);
 
     var barChartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July", "July", "July", "July", "July", "July"],
+        labels: ["December","January"],
         datasets: [
-				{
-				    fillColor: "rgba(220,220,220,0.5)",
-				    strokeColor: "rgba(220,220,220,1)",
-				    data: [65, 59, 90, 81, 56, 55, 40,60]
-				},
+				
 				{
 				    fillColor: "rgba(151,187,205,0.5)",
 				    strokeColor: "rgba(151,187,205,1)",
-				    data: [28, 48, 40, 19, 96, 27, 100,80]
+				    data: [ <?php echo $query->total_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->total_bar_chart_jan($connection->my_connection); ?>]
+				}
+			]
+
+    }
+
+    var barChartData1 = {
+        labels: ["December","January"],
+        datasets: [
+				
+				{
+				    fillColor: "rgba(151,187,205,0.5)",
+				    strokeColor: "rgba(151,187,205,1)", 
+	 
+				    data: [<?php echo $query->happy_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->happy_bar_chart_jan($connection->my_connection); ?>]
+				}
+			]
+
+    }
+    var barChartData2 = {
+        labels: ["December","January"],
+        datasets: [
+				
+				{
+				    fillColor: "rgba(151,187,205,0.5)",
+				    strokeColor: "rgba(151,187,205,1)", 
+				    data: [<?php echo $query->average_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->average_bar_chart_jan($connection->my_connection); ?>]
+				}
+			]
+
+    }
+    var barChartData3 = {
+        labels: ["December","January"],
+        datasets: [
+				
+				{
+				    fillColor: "rgba(151,187,205,0.5)",
+				    strokeColor: "rgba(151,187,205,1)", 
+				    data: [<?php echo $query->sad_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->sad_bar_chart_jan($connection->my_connection); ?>]
 				}
 			]
 
     }
 
     var myLine = new Chart(document.getElementById("bar-chart").getContext("2d")).Bar(barChartData);
-	var myLine = new Chart(document.getElementById("bar-chart1").getContext("2d")).Bar(barChartData);
-	var myLine = new Chart(document.getElementById("bar-chart2").getContext("2d")).Bar(barChartData);
-	var myLine = new Chart(document.getElementById("bar-chart3").getContext("2d")).Bar(barChartData);
+	var myLine = new Chart(document.getElementById("bar-chart1").getContext("2d")).Bar(barChartData1);
+	var myLine = new Chart(document.getElementById("bar-chart2").getContext("2d")).Bar(barChartData2);
+	var myLine = new Chart(document.getElementById("bar-chart3").getContext("2d")).Bar(barChartData3);
 	
 	</script>
 
