@@ -1,13 +1,15 @@
 <?php require_once("includes/classes/connection.php"); ?>
 <?php require_once("includes/classes/user.php"); ?>
+<?php require_once("includes/classes/queries.php"); ?>
 <?php
 $user = new user();
-$user->session();
+//$user->session();
 $connection = new connection();
 $connection->connect();
 $user->confirm_logged_in();
-
+$query = new query();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -185,20 +187,20 @@ $user->confirm_logged_in();
 	      	<div class="info-box">
                <div class="row-fluid stats-box">
                   <div class="span4">
-                  	<div class="stats-box-title">Vizitor</div>
-                    <div class="stats-box-all-info"><i class="icon-user" style="color:#3366cc;"></i> 555K</div>
+                  	<div class="stats-box-title">HAPPY</div>
+                    <div class="stats-box-all-info"><img src="img/happy.png" /> <?php echo $query->happy($connection->my_connection); ?></div>
                     <div class="wrap-chart"><div id="visitor-stat" class="chart" style="padding: 0px; position: relative;"><canvas id="bar-chart1" class="chart-holder" height="150" width="325"></canvas></div></div>
                   </div>
                   
                   <div class="span4">
-                    <div class="stats-box-title">Likes</div>
-                    <div class="stats-box-all-info"><i class="icon-thumbs-up"  style="color:#F30"></i> 66.66</div>
+                    <div class="stats-box-title">AVERAGE</div>
+                    <div class="stats-box-all-info"><img src="img/average.png" /> <?php echo $query->average($connection->my_connection); ?></div>
                     <div class="wrap-chart"><div id="order-stat" class="chart" style="padding: 0px; position: relative;"><canvas id="bar-chart2" class="chart-holder" height="150" width="325"></canvas></div></div>
                   </div>
                   
                   <div class="span4">
-                    <div class="stats-box-title">Orders</div>
-                    <div class="stats-box-all-info"><i class="icon-shopping-cart" style="color:#3C3"></i> 15.55</div>
+                    <div class="stats-box-title">SAD</div>
+                    <div class="stats-box-all-info"><img src="img/sad.png" /> <?php echo $query->sad($connection->my_connection); ?></div>
                     <div class="wrap-chart">
                     
                     <div id="user-stat" class="chart" style="padding: 0px; position: relative;"><canvas id="bar-chart3" class="chart-holder" height="150" width="325"></canvas></div>

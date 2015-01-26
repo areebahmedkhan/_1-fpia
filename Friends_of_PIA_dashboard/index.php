@@ -1,12 +1,13 @@
 <?php require_once("includes/classes/connection.php"); ?>
 <?php require_once("includes/classes/user.php"); ?>
+<?php require_once("includes/classes/queries.php"); ?>
 <?php
 $user = new user();
-$user->session();
+//$user->session();
 $connection = new connection();
 $connection->connect();
 $user->confirm_logged_in();
-
+$query = new query();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,38 +102,38 @@ $user->confirm_logged_in();
                 <div class="widget-content">
                   <h6 class="bigstats">A fully responsive premium quality admin template built on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  These are some dummy lines to fill the area.</h6>
                   <div id="big_stats" class="cf">
-                    <div class="stat"><i class="icon-anchor"></i> <span class="value">851</span> </div>
+                    <div class="stat"><i class="icon-anchor"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
+                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value"><?php echo $query->chekIn($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">922</span> </div>
+                    <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value"><?php echo $query->Lounge_Services($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">25%</span> </div>
+                    <div class="stat"> <i class="icon-bullhorn"></i> <span class="value"><?php echo $query->Boarding_Gate($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
  
                   </div>
 				  <div id="big_stats" class="cf">
-                    <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div>
+                    <div class="stat"> <i class="icon-anchor"></i> <span class="value"><?php echo $query->Punctuality($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
+                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value"><?php echo $query->IN_Flight_Services($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">922</span> </div>
+                    <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value"><?php echo $query->Cabin_Crew($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">25%</span> </div>
+                    <div class="stat"> <i class="icon-bullhorn"></i> <span class="value"><?php echo $query->Meals($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
  
                   </div>
 				  <div id="big_stats" class="cf">
-                    <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div>
+                    <div class="stat"> <i class="icon-anchor"></i> <span class="value"><?php echo $query->Entertainment($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
+                    <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value"><?php echo $query->Cabin_Conditions($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
                     <div class="stat"> </div>
