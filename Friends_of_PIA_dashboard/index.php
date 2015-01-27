@@ -94,13 +94,13 @@ $query = new query();
         <div class="span6">
           <div class="widget widget-nopad">
             <div class="widget-header"> <i class="icon-list-alt"></i>
-              <h3> Today's Stats</h3>
+              <h3>Feedback Menus</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="widget big-stats-container">
                 <div class="widget-content">
-                  <h6 class="bigstats">A fully responsive premium quality admin template built on Twitter Bootstrap by <a href="http://www.egrappler.com" target="_blank">EGrappler.com</a>.  These are some dummy lines to fill the area.</h6>
+                  <h6 class="bigstats">Friends of PIA Feedback Menu</h6>
                   <div id="big_stats" class="cf">
                     <div class="stat"><i class="icon-anchor"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
@@ -149,18 +149,18 @@ $query = new query();
               </div>
             </div>
           </div>
-          <!-- /widget -->
+          <!-- /widget 
           <div class="widget widget-nopad">
             <div class="widget-header"> <i class="icon-list-alt"></i>
               <h3> Recent News</h3>
             </div>
-            <!-- /widget-header -->
+            <!-- /widget-header 
             <div class="widget-content">
               <div id='calendar'>
               </div>
-            </div>
-            <!-- /widget-content --> 
-          </div>
+            </div>-->
+            <!-- /widget-content 
+          </div>-->
           <!-- /widget -->
           <div class="widget">
             <div class="widget-header"> <i class="icon-file"></i>
@@ -243,13 +243,13 @@ $query = new query();
         <div class="span6">
           <div class="widget">
             <div class="widget-header"> <i class="icon-bookmark"></i>
-              <h3>Important Shortcuts</h3>
+              <h3>Shortcuts</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
               <div class="shortcuts"> <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-list-alt"></i><span
                                         class="shortcut-label">Apps</span> </a><a href="javascript:;" class="shortcut"><i
-                                            class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Bookmarks</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Comments</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
+                                            class="shortcut-icon icon-bookmark"></i><span class="shortcut-label">Bookmarks</span> </a><a href="reports.php" class="shortcut"><i class="shortcut-icon icon-signal"></i> <span class="shortcut-label">Reports</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-comment"></i><span class="shortcut-label">Comments</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-user"></i><span
                                                 class="shortcut-label">Users</span> </a><a href="javascript:;" class="shortcut"><i
                                                     class="shortcut-icon icon-file"></i><span class="shortcut-label">Notes</span> </a><a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-picture"></i> <span class="shortcut-label">Photos</span> </a><a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-tag"></i><span class="shortcut-label">Tags</span> </a> </div>
               <!-- /shortcuts --> 
@@ -259,7 +259,7 @@ $query = new query();
           <!-- /widget -->
           <div class="widget">
             <div class="widget-header"> <i class="icon-signal"></i>
-              <h3> Area Chart Example</h3>
+              <h3> Monthly Feedback Flow Chart</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
@@ -447,21 +447,15 @@ $query = new query();
 <script>     
 
         var lineChartData = {
-            labels: ["January", "February", "March", "April", "May", "May", "May", "May", "May", "May", "May", "May"],
+            labels: ["December","January"],
             datasets: [
-				{
-				    fillColor: "rgba(220,220,220,0.5)",
-				    strokeColor: "rgba(220,220,220,1)",
-				    pointColor: "rgba(220,220,220,1)",
-				    pointStrokeColor: "#fff",
-				    data: [65, 59, 90, 81, 56, 55, 40,50,61,98,65]
-				},
+				
 				{
 				    fillColor: "rgba(151,187,205,0.5)",
 				    strokeColor: "rgba(151,187,205,1)",
 				    pointColor: "rgba(151,187,205,1)",
 				    pointStrokeColor: "#fff",
-				    data: [28, 48, 40, 19, 96, 27, 100, 40,50,61,98,65]
+				    data: [<?php echo $query->total_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->total_bar_chart_jan($connection->my_connection); ?>]
 				}
 			]
 
