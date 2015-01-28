@@ -214,7 +214,7 @@ $query = new query();
             <!-- /widget-header -->
             <div class="widget-content">
               <div id="dvData">
-              <table class="table table-striped table-bordered" id="example" class="display" cellspacing="0" width="100%">
+              <table class="table table-striped table-bordered display" id="example"  cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th> Name </th>
