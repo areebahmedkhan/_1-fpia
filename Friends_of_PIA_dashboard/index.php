@@ -23,6 +23,8 @@ $query = new query();
 <link href="css/font-awesome.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <link href="css/pages/dashboard.css" rel="stylesheet">
+<link href="css/jquery.dataTables.css" rel="stylesheet">
+
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -104,7 +106,7 @@ $query = new query();
                 <div class="widget-content">
                   <h6 class="bigstats">Friends of PIA Feedback Menu</h6>
                   <div id="big_stats" class="cf">
-                    <div class="stat"><i class="icon"><img src="img/airportservices-transparent.png" alt="Airport Services" width = 50></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
+                    <div class="stat"><i class="icon"><img src="img/airportservices-transparent.png" alt="Airport Services" width = 50 onmouseover="nhpup.popup('click to see all administration options');"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
                     <div class="stat"> <i class="icon"><img src="img/checkin-transparent.png" width = 50 alt="Check In"></i> <span class="value"><?php echo $query->chekIn($connection->my_connection); ?></span> </div>
@@ -212,7 +214,7 @@ $query = new query();
             <!-- /widget-header -->
             <div class="widget-content">
               <div id="dvData">
-              <table class="table table-striped table-bordered">
+              <table class="table table-striped table-bordered" id="example" class="display" cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th> Name </th>
@@ -355,10 +357,21 @@ $query = new query();
 <script src="js/chart.min.js" type="text/javascript"></script> 
 <script src="js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="js/full-calendar/fullcalendar.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.dataTables.min.js"></script>
  
 <script src="js/base.js"></script> 
 
 <script type="text/javascript">
+
+$(document).ready(function() {
+    $('#example').dataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>
+
+<script type="text/javascript">
+
 $(document).ready(function () {
 
     function exportTableToCSV($table, filename) {
@@ -405,7 +418,7 @@ $(document).ready(function () {
     // This must be a hyperlink
     $(".export").on('click', function (event) {
         // CSV
-        exportTableToCSV.apply(this, [$('#dvData>table'), 'PIA_Report.csv']);
+        exportTableToCSV.apply(this, [$('#dvData'), 'PIA_Report.csv']);
         
         // IF CSV, don't do event.preventDefault() or return false
         // We actually need this to be a typical hyperlink
