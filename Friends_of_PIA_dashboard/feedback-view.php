@@ -33,6 +33,13 @@ $user->confirm_logged_in();
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <style type="text/css">
+    .name,.email,.flight_no,.sub_title{
+    	cursor: pointer;
+    }
+    </style>
+
   </head>
 
 <body>
@@ -178,34 +185,30 @@ $user->confirm_logged_in();
                   </tr>
                 </thead>
 
-                <tbody>
-                    
-                <?php /////////// MAIN QUERY //////////
-                //select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id AND sc.title = 'Meals' order by f.fd_id desc ?>
-
+                <tbody style='text-align:center;' id ="tbody_query_data">
 
                 <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id order by f.fd_id desc";
                           $result = mysqli_query($connection->my_connection,$sql);
                           if (mysqli_num_rows($result) > 0) {
                       while($row = mysqli_fetch_assoc($result)) {
                       echo "<tr>";
-                      echo "<td><a href='#' value = '".$row['name']."'>".$row['name']."</a></td>";
-                      echo "<td><a href='#' value = '".$row['email']."'>".$row['email']."</a></td>";
-                      echo "<td><a href='#' value = '".$row['flight_no']."'>".$row['flight_no']."</a></td>";
+                      echo "<td><a class = 'name'>".$row['name']."</a></td>";
+                      echo "<td><a class = 'email'>".$row['email']."</a></td>";
+                      echo "<td><a class = 'flight_no'>".$row['flight_no']."</a></td>";
               
-                      echo "<td><a href='#' id = 'sub_title' value = '".$row['sub_title']."'>".$row['sub_title']."</a></td>";
+                      echo "<td><a class = 'sub_title'>".$row['sub_title']."</a></td>";
                       echo "<td>".$row['comments']."</td>";
                       //ratting smile
                       if($row['ratting']=='10'){
-                        echo "<td>".'<img src="images/happy.png" width="50" height="50" />'."</td>";
+                        echo "<td>".'<img src="images/happy.png" width="50" />'."</td>";
                       }
                       else if($row['ratting']=='5'){
-                        echo "<td>".'<img src="images/average.png" width="50" height="50" />'."</td>";
+                        echo "<td>".'<img src="images/average.png" width="50"/>'."</td>";
                       }
                       else if($row['ratting']=='1'){
-                        echo "<td>".'<img src="images/sad.png" width="50" height="50" />'."</td>";
+                        echo "<td>".'<img src="images/sad.png" width="50" />'."</td>";
                       }else{
-                        echo "<td>".'<img src="images/no-image.png" width="50" height="50" />'."</td>";
+                        echo "<td>".'<img src="images/no-image.png" width="50" />'."</td>";
                       }
                                 
                       if($row['image']){
@@ -328,6 +331,56 @@ $user->confirm_logged_in();
 <script src="js/base.js"></script>
 
 <script src="js/guidely/guidely.min.js"></script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".sub_title").click(function(){
+		var data = $(this).text();
+		$.ajax({
+			type	: 	"POST",
+			url 	: 	"controller.php",
+			data 	: 	{action : 	"sub_category" , content 	: 	data}
+		}).done(function(data){
+			$("#tbody_query_data").html(data);
+		});
+	});
+
+	$(".name").click(function(){
+		var data = $(this).text();
+		$.ajax({
+			type	: 	"POST",
+			url 	: 	"controller.php",
+			data 	: 	{action : 	"name" , content 	: 	data}
+		}).done(function(data){
+			$("#tbody_query_data").html(data);
+		});
+	});
+
+	$(".email").click(function(){
+		var data = $(this).text();
+		$.ajax({
+			type	: 	"POST",
+			url 	: 	"controller.php",
+			data 	: 	{action : 	"email" , content 	: 	data}
+		}).done(function(data){
+			$("#tbody_query_data").html(data);
+		});
+	});
+
+	$(".flight_no").click(function(){
+		var data = $(this).text();
+		$.ajax({
+			type	: 	"POST",
+			url 	: 	"controller.php",
+			data 	: 	{action : 	"flight_no" , content 	: 	data}
+		}).done(function(data){
+			$("#tbody_query_data").html(data);
+		});
+	});
+});
+</script>
 
 <script>
 
