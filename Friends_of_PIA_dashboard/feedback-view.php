@@ -13,7 +13,7 @@ $user->confirm_logged_in();
   
 <head>
     <meta charset="utf-8">
-    <title>FAQ - Admin</title>
+    <title>All Feedback</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">    
@@ -139,30 +139,6 @@ $user->confirm_logged_in();
                 		<i class="icon"></i><span>Feedback View</span>
                 	 </a>
                  </li>
-                
-               <!-- <li>					
-					<a href="shortcodes.html">
-						<i class="icon-code"></i>
-						<span>Shortcodes</span>
-					</a>  									
-				</li>
-				
-				<li class="  dropdown">					
-					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-long-arrow-down"></i>
-						<span>Drops</span>
-						<b class="caret"></b>
-					</a>	
-				
-					<ul class="dropdown-menu">
-                    	<li><a href="icons.html">Icons</a></li>
-						<li><a href="faq.html">FAQ</a></li>
-                        <li><a href="pricing.html">Pricing Plans</a></li>
-                        <li><a href="login.html">Login</a></li>
-						<li><a href="signup.html">Signup</a></li>
-						<li><a href="error.html">404</a></li>
-                    </ul>    				
-				</li>-->
 			
 			</ul>
 
@@ -179,26 +155,77 @@ $user->confirm_logged_in();
 
 	    <div class="container">
 	
-	      <div class="row">	      	
-	      	
-	      	    		
-      		
-      		
-      		
-      		 	
-	      	enter yout coding here in row div
-      		 	
-	      	
-	      	
-      		
-      		
-      		
-      		
-      		
-      		 	
-	      	
-	      	
-	      	
+	      <div class="row">	      	      		 	
+	      <div class="widget widget-table action-table" >
+            <div class="widget-header"> <i class="icon-th-list"></i>
+              <h3>All Feedback Records</h3>
+            </div>
+            
+            <!-- /widget-header -->
+            <div class="widget-content">
+              <div id="dvData">
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Flight No </th>
+                    <th> Menu </th>
+                    <th> Comments </th>
+                    <th> Rating </th>
+                    <th> Image </th>
+                    <th> Date And Time </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                    
+                <?php /////////// MAIN QUERY //////////
+                //select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id AND sc.title = 'Meals' order by f.fd_id desc ?>
+
+
+                <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id order by f.fd_id desc";
+                          $result = mysqli_query($connection->my_connection,$sql);
+                          if (mysqli_num_rows($result) > 0) {
+                      while($row = mysqli_fetch_assoc($result)) {
+                      echo "<tr>";
+                      echo "<td><a href='#' value = '".$row['name']."'>".$row['name']."</a></td>";
+                      echo "<td><a href='#' value = '".$row['email']."'>".$row['email']."</a></td>";
+                      echo "<td><a href='#' value = '".$row['flight_no']."'>".$row['flight_no']."</a></td>";
+              
+                      echo "<td><a href='#' id = 'sub_title' value = '".$row['sub_title']."'>".$row['sub_title']."</a></td>";
+                      echo "<td>".$row['comments']."</td>";
+                      //ratting smile
+                      if($row['ratting']=='10'){
+                        echo "<td>".'<img src="images/happy.png" width="50" height="50" />'."</td>";
+                      }
+                      else if($row['ratting']=='5'){
+                        echo "<td>".'<img src="images/average.png" width="50" height="50" />'."</td>";
+                      }
+                      else if($row['ratting']=='1'){
+                        echo "<td>".'<img src="images/sad.png" width="50" height="50" />'."</td>";
+                      }else{
+                        echo "<td>".'<img src="images/no-image.png" width="50" height="50" />'."</td>";
+                      }
+                                
+                      if($row['image']){
+                        echo "<td>".'<a href="data:image/jpeg;base64,'.$row['image'].' " width="500" height="500" target="_blank"><img width="120" height="150" src="data:image/jpeg;base64,'.$row['image'].'" /></a>'."</td>";
+                      }else{
+                        echo "<td>".'<img src="images/no-image.png" width="120" height="150" />'."</td>";
+                      }
+                      echo "<td>".$row['date_time']."</td>";
+                      echo "</tr>";
+                      }        
+                    }
+                    ?>
+                </tbody>
+              </table>
+            </div>
+            </div>
+            <!-- /widget-content --> 
+          </div>
+      <!-- /row --> 
+    </div>
 	      </div> <!-- /row -->
 	
 	    </div> <!-- /container -->

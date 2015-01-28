@@ -232,12 +232,12 @@ $query = new query();
                           if (mysqli_num_rows($result) > 0) {
                       while($row = mysqli_fetch_assoc($result)) {
                       echo "<tr>";
-                      echo "<td><a href=''>".$row['name']."</a></td>";
-                      echo "<td><a href=''>".$row['email']."</a></td>";
-                      echo "<td><a href=''>".$row['flight_no']."</a></td>";
+                      echo "<td>".$row['name']."</td>";
+                      echo "<td>".$row['email']."</td>";
+                      echo "<td>".$row['flight_no']."</td>";
               
-                      echo "<td><a href=''>".$row['sub_title']."</a></td>";
-                      echo "<td><a href=''>".$row['comments']."</a></td>";
+                      echo "<td>".$row['sub_title']."</td>";
+                      echo "<td>".$row['comments']."</td>";
                       //ratting smile
                       if($row['ratting']=='10'){
                         echo "<td>".'<img src="images/happy.png" width="50" height="50" />'."</td>";
