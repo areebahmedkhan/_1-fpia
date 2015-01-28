@@ -138,7 +138,11 @@ $query = new query();
 						<span>Charts</span>
 					</a>  									
 				</li>
-                
+                <li>
+                	<a href="feedback-view.php">
+                		<i class="icon"></i><span>Feedback View</span> 
+                	</a> 
+                </li>
                 
                <!-- <li>					
 					<a href="shortcodes.php">

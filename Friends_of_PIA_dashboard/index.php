@@ -69,6 +69,8 @@ $query = new query();
         <li><a href="reports.php"><i class="icon-list-alt"></i><span>Reports</span> </a> </li>
         <li><a href="guidely.php"><i class="icon-facetime-video"></i><span>App Tour</span> </a></li>
         <li><a href="charts.php"><i class="icon-bar-chart"></i><span>Charts</span> </a> </li>
+        <li><a href="feedback-view.php"><i class="icon"></i><span>Feedback View</span> </a> </li>
+        
         <!--<li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">

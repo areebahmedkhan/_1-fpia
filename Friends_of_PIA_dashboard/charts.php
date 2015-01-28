@@ -74,6 +74,7 @@ $user->confirm_logged_in();
                     </a></li>
                     <li class="active"><a href="charts.php"><i class="icon-bar-chart"></i><span>Charts</span> </a>
                     </li>
+                    <li><a href="feedback-view.php"><i class="icon"></i><span>Feedback View</span> </a> </li>
                     <!--<li><a href="shortcodes.html"><i class="icon-code"></i><span>Shortcodes</span> </a>
                     </li>
                     <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
