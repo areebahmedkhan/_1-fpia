@@ -106,38 +106,38 @@ $query = new query();
                 <div class="widget-content">
                   <h6 class="bigstats">Friends of PIA Feedback Menu</h6>
                   <div id="big_stats" class="cf">
-                    <div class="stat"><i class="icon"><img src="img/airportservices-transparent.png" alt="Airport Services" width = 50 onmouseover="nhpup.popup('click to see all administration options');"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
+                    <div class="stat" ><i class="icon" ><img src="img/airportservices-transparent.png"  width = "50" title="Airport Services"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/checkin-transparent.png" width = 50 alt="Check In"></i> <span class="value"><?php echo $query->chekIn($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/checkin-transparent.png" width = 50 title="Check In"></i> <span class="value"><?php echo $query->chekIn($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/lounge-transparent.png" width = 50 alt="Lounge Services"></i> <span class="value"><?php echo $query->Lounge_Services($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/lounge-transparent.png" width = 50 title="Lounge Services"></i> <span class="value"><?php echo $query->Lounge_Services($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/boardinggate-transparent.png" width = 50 alt="Boarding Gate"></i> <span class="value"><?php echo $query->Boarding_Gate($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/boardinggate-transparent.png" width = 50 title="Boarding Gate"></i> <span class="value"><?php echo $query->Boarding_Gate($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
  
                   </div>
 				  <div id="big_stats" class="cf">
-                    <div class="stat"> <i class="icon"><img src="img/punctuality-transparent.png" width = 50 alt="Punctuality"></i> <span class="value"><?php echo $query->Punctuality($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/punctuality-transparent.png" width = 50 title="Punctuality"></i> <span class="value"><?php echo $query->Punctuality($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/inflightservices-transparent.png" width = 50 alt="In Flight Services"></i> <span class="value"><?php echo $query->IN_Flight_Services($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/inflightservices-transparent.png" width = 50 title="In Flight Services"></i> <span class="value"><?php echo $query->IN_Flight_Services($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/cabincrew-transparent.png" width = 50 alt="Cabin Crew"></i><span class="value"><?php echo $query->Cabin_Crew($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/cabincrew-transparent.png" width = 50 title="Cabin Crew"></i><span class="value"><?php echo $query->Cabin_Crew($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/meals-transparent.png" width = 50 alt="Meals"></i> <span class="value"><?php echo $query->Meals($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/meals-transparent.png" width = 50 title="Meals"></i> <span class="value"><?php echo $query->Meals($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
  
                   </div>
 				  <div id="big_stats" class="cf">
-                    <div class="stat"> <i class="icon"><img src="img/entertainment-transparent.png" width = 50 alt="Entertainment"></i> <span class="value"><?php echo $query->Entertainment($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/entertainment-transparent.png" width = 50 title="Entertainment"></i> <span class="value"><?php echo $query->Entertainment($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
-                    <div class="stat"> <i class="icon"><img src="img/cabincondition-transparent.png" width = 50 alt="Cabin Condition"></i> <span class="value"><?php echo $query->Cabin_Conditions($connection->my_connection); ?></span> </div>
+                    <div class="stat"> <i class="icon"><img src="img/cabincondition-transparent.png" width = 50 title="Cabin Condition"></i> <span class="value"><?php echo $query->Cabin_Conditions($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
                     <div class="stat"> </div>

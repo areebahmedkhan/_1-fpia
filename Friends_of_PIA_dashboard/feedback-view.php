@@ -13,7 +13,7 @@ $user->confirm_logged_in();
   
 <head>
     <meta charset="utf-8">
-    <title>All Feedback</title>
+    <title>Admin Feedback</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">    
@@ -28,6 +28,8 @@ $user->confirm_logged_in();
     
     
     <link href="js/guidely/guidely.css" rel="stylesheet"> 
+
+    <link href="css/jquery.dataTables.css" rel="stylesheet">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -163,15 +165,15 @@ $user->confirm_logged_in();
 	    <div class="container">
 	
 	      <div class="row">	      	      		 	
-	      <div class="widget widget-table action-table" >
+	      <div class="widget widget-table action-table" style="margin-left: 30px;">
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>All Feedback Records</h3>
+              <h3>All Feedback Records</h3><a style="float:right; margin-right:5px;" href="#" class="export"><input type="button" value="Export data in CSV"></a>
             </div>
             
             <!-- /widget-header -->
             <div class="widget-content">
               <div id="dvData">
-              <table class="table table-striped table-bordered">
+              <table class="table table-striped table-bordered display" id="example"  cellspacing="0" width="100%">
                 <thead>
                   <tr>
                     <th> Name </th>
@@ -331,6 +333,7 @@ $user->confirm_logged_in();
 <script src="js/base.js"></script>
 
 <script src="js/guidely/guidely.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
 
 
@@ -382,41 +385,69 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
 
-$(function () {
-	
-	guidely.add ({
-		attachTo: '#target-1'
-		, anchor: 'top-left'
-		, title: 'Guide Title'
-		, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.'
-	});
-	
-	guidely.add ({
-		attachTo: '#target-2'
-		, anchor: 'top-right'
-		, title: 'Guide Title'
-		, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.'
-	});
-	
-	guidely.add ({
-		attachTo: '#target-3'
-		, anchor: 'middle-middle'
-		, title: 'Guide Title'
-		, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.'
-	});
-	
-	guidely.add ({
-		attachTo: '#target-4'
-		, anchor: 'top-right'
-		, title: 'Guide Title'
-		, text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.'
-	});
-	
-	guidely.init ({ welcome: true, startTrigger: false });
+<script type="text/javascript">
 
+$(document).ready(function() {
+    $('#example').dataTable( {
+        "pagingType": "full_numbers"
+    } );
+} );
+</script>
 
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    function exportTableToCSV($table, filename) {
+
+        var $rows = $table.find('tr:has(td)'),
+
+            // Temporary delimiter characters unlikely to be typed by keyboard
+            // This is to avoid accidentally splitting the actual contents
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+
+            // actual delimiter characters for CSV format
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+
+            // Grab text from table into CSV formatted string
+            csv = '"' + $rows.map(function (i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+
+                return $cols.map(function (j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+
+                    return text.replace('"', '""'); // escape double quotes
+
+                }).get().join(tmpColDelim);
+
+            }).get().join(tmpRowDelim)
+                .split(tmpRowDelim).join(rowDelim)
+                .split(tmpColDelim).join(colDelim) + '"',
+
+            // Data URI
+            csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+            'download': filename,
+                'href': csvData,
+                'target': '_blank'
+        });
+    }
+
+    // This must be a hyperlink
+    $(".export").on('click', function (event) {
+        // CSV
+        exportTableToCSV.apply(this, [$('#dvData'), 'PIA_Report.csv']);
+        
+        // IF CSV, don't do event.preventDefault() or return false
+        // We actually need this to be a typical hyperlink
+    });
 });
 
 </script>
