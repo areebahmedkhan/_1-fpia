@@ -231,8 +231,17 @@ $query = new query();
 						<i class="icon-star"></i>
 						<h3>Rating %</h3>
 					</div> <!-- /widget-header -->
-					
-					<div class="widget-content"><ul><li style="color:#F38630; font-size: 20px;";><b>Happy</b></li><br><li style="color:#E0E4CC; font-size: 20px;";>Average</li><br><li style="color:#69D2E7; font-size: 20px;";>Sad</li></ul>
+					<?php $total=$query->total_feedback($connection->my_connection);?>
+
+					<?php $happy=$query->happy($connection->my_connection);?>
+					<?php $average=$query->average($connection->my_connection);?>
+					<?php $sad=$query->sad($connection->my_connection);?>
+
+					<?php $percentage_happy=($happy/$total)*100;?>
+					<?php $percentage_average=($average/$total)*100;?>
+					<?php $percentage_sad=($sad/$total)*100;?>
+
+					<div class="widget-content"><ul><li style="color:#F38630; font-size: 20px;";><b>Happy  : <?php echo round($percentage_happy)."%";?></b></li><br><li style="color:#E0E4CC; font-size: 20px;";>Average  : <?php echo round($percentage_average)."%";?></li><br><li style="color:#69D2E7; font-size: 20px;";>Sad  : <?php echo round($percentage_sad)."%";?></li></ul>
 						<canvas id="pie-chart" class="chart-holder" height="250" width="538"></canvas>
 					</div> <!-- /widget-content -->
 						
@@ -391,51 +400,51 @@ $query = new query();
     var myPie = new Chart(document.getElementById("pie-chart").getContext("2d")).Pie(pieData);
 
     var barChartData = {
-        labels: ["December","January"],
+        labels: ["December","January","February"],
         datasets: [
 				
 				{
 				    fillColor: "rgba(151,187,205,0.5)",
 				    strokeColor: "rgba(151,187,205,1)",
-				    data: [ <?php echo $query->total_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->total_bar_chart_jan($connection->my_connection); ?>]
+				    data: [ <?php echo $query->total_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->total_bar_chart_jan($connection->my_connection); ?>,<?php echo $query->total_bar_chart_feb($connection->my_connection); ?>]
 				}
 			]
 
     }
 
     var barChartData1 = {
-        labels: ["December","January"],
+        labels: ["December","January","February"],
         datasets: [
 				
 				{
 				    fillColor: "rgba(151,187,205,0.5)",
 				    strokeColor: "rgba(151,187,205,1)", 
 	 
-				    data: [<?php echo $query->happy_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->happy_bar_chart_jan($connection->my_connection); ?>]
+				    data: [<?php echo $query->happy_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->happy_bar_chart_jan($connection->my_connection); ?>,<?php echo $query->happy_bar_chart_feb($connection->my_connection); ?>]
 				}
 			]
 
     }
     var barChartData2 = {
-        labels: ["December","January"],
+        labels: ["December","January","February"],
         datasets: [
 				
 				{
 				    fillColor: "rgba(151,187,205,0.5)",
 				    strokeColor: "rgba(151,187,205,1)", 
-				    data: [<?php echo $query->average_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->average_bar_chart_jan($connection->my_connection); ?>]
+				    data: [<?php echo $query->average_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->average_bar_chart_jan($connection->my_connection); ?>,<?php echo $query->average_bar_chart_feb($connection->my_connection); ?>]
 				}
 			]
 
     }
     var barChartData3 = {
-        labels: ["December","January"],
+        labels: ["December","January","February"],
         datasets: [
 				
 				{
 				    fillColor: "rgba(151,187,205,0.5)",
 				    strokeColor: "rgba(151,187,205,1)", 
-				    data: [<?php echo $query->sad_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->sad_bar_chart_jan($connection->my_connection); ?>]
+				    data: [<?php echo $query->sad_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->sad_bar_chart_jan($connection->my_connection); ?>,<?php echo $query->sad_bar_chart_feb($connection->my_connection); ?>]
 				}
 			]
 

@@ -430,7 +430,7 @@ $(document).ready(function () {
 <script>     
 
         var lineChartData = {
-            labels: ["December","January"],
+            labels: ["December","January","February"],
             datasets: [
 				
 				{
@@ -438,7 +438,7 @@ $(document).ready(function () {
 				    strokeColor: "rgba(151,187,205,1)",
 				    pointColor: "rgba(151,187,205,1)",
 				    pointStrokeColor: "#fff",
-				    data: [<?php echo $query->total_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->total_bar_chart_jan($connection->my_connection); ?>]
+				    data: [<?php echo $query->total_bar_chart_dec($connection->my_connection); ?>, <?php echo $query->total_bar_chart_jan($connection->my_connection); ?>,<?php echo $query->total_bar_chart_feb($connection->my_connection); ?>]
 				}
 			]
 
