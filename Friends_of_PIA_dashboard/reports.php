@@ -368,6 +368,7 @@ $query = new query();
 <script src="js/chart.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/base.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script>
 
     var pieData = [
