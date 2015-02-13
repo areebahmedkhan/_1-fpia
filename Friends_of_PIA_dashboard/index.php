@@ -25,6 +25,7 @@ $query = new query();
 <link href="css/pages/dashboard.css" rel="stylesheet">
 <link href="css/jquery.dataTables.css" rel="stylesheet">
 
+
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -106,7 +107,7 @@ $query = new query();
                 <div class="widget-content">
                   <h6 class="bigstats">Friends of PIA Feedback Menu</h6>
                   <div id="big_stats" class="cf">
-                    <div class="stat" ><i class="icon" ><img src="img/airportservices-transparent.png"  width = "50" title="Airport Services"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
+                    <div class="stat" ><i class="icon" id="airport_services" style="cursor:pointer;"><img src="img/airportservices-transparent.png"  width = "50" title="Airport Services"></i> <span class="value"><?php echo $query->airport_service($connection->my_connection); ?></span> </div>
                     <!-- .stat -->
                     
                     <div class="stat"> <i class="icon"><img src="img/checkin-transparent.png" width = 50 title="Check In"></i> <span class="value"><?php echo $query->chekIn($connection->my_connection); ?></span> </div>
@@ -659,5 +660,18 @@ $(document).ready(function () {
         });
       });
     </script><!-- /Calendar -->
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    $("#airport_services").click(function(){
+      alert("airport_services");
+    })
+
+  });
+</script>
+
 </body>
 </html>
