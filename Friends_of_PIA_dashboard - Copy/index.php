@@ -208,18 +208,12 @@ $query = new query();
       </div>
       <div class="widget widget-table action-table" >
             <div class="widget-header"> <i class="icon-th-list"></i>
-              <h3>All Feedback Records</h3><a style="float:right; margin-right:5px; margin-top:5px;" href="#" class="export"><input type="button" value="Export data in CSV"></a>
-              <select style="float:right; margin-right:5px; margin-top:8px;" id="selectcombo">
-                <option value="comboall">All data</option>
-                <option value="combo7">View 7 days data</option>
-                <option value="combo15">View 15 days data</option>
-                <option value="combo30">View 30 days data</option>
-              </select>
+              <h3>All Feedback Records</h3><a style="float:right; margin-right:5px; margin-top:5px;" href="#" class="export"><input type="button" value="Export data in CSV"></a><select style="float:right; margin-right:5px; margin-top:8px;" id="selectcombo"><option value="comboall">All data</option><option value="combo7">View 7 days data</option><option value="combo15">View 15 days data</option><option value="combo30">View 1 month data</option></select>
             </div>
             
             <!-- /widget-header -->
             <div class="widget-content">
-              <div class="dvData">
+              <div id="dvData">
               <table class="table table-striped table-bordered display" id="example"  cellspacing="0" width="100%">
                 <thead>
                   <tr>
@@ -273,7 +267,7 @@ $query = new query();
                 
                 </tbody>
                 <tbody id="seven">
-                    <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id AND  f.date_time > CURRENT_DATE - INTERVAL 7 DAY order by f.fd_id  desc";
+                    <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id order by f.fd_id desc";
                           $result = mysqli_query($connection->my_connection,$sql);
                           if (mysqli_num_rows($result) > 0) {
                       while($row = mysqli_fetch_assoc($result)) {
@@ -310,7 +304,7 @@ $query = new query();
                 
                 </tbody>
                 <tbody id="fifteen">
-                    <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id AND  f.date_time > CURRENT_DATE - INTERVAL 15 DAY order by f.fd_id  desc";
+                    <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id order by f.fd_id desc";
                           $result = mysqli_query($connection->my_connection,$sql);
                           if (mysqli_num_rows($result) > 0) {
                       while($row = mysqli_fetch_assoc($result)) {
@@ -347,7 +341,7 @@ $query = new query();
                 
                 </tbody>
                 <tbody id="thirty">
-                    <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id AND  f.date_time > CURRENT_DATE - INTERVAL 30 DAY order by f.fd_id  desc";
+                    <?php $sql = "select u.name,u.email,u.flight_no, f.fd_id , f.date_time , c.title , sc.title as 'sub_title' , f.comments , f.ratting , f.image from catagories c, sub_catagories sc, feedback f, user_table u where u.user_id = f.user_id AND f.sub_cat_id = sc.sub_cat AND c.cat_id = sc.cat_id order by f.fd_id desc";
                           $result = mysqli_query($connection->my_connection,$sql);
                           if (mysqli_num_rows($result) > 0) {
                       while($row = mysqli_fetch_assoc($result)) {
@@ -428,52 +422,21 @@ $query = new query();
 
 <script type="text/javascript">
     $(document).ready(function(){
-      //alert("all");
-      $("#all").show();
+     
+      $("#all").hide();
       $("#seven").hide();
       $("#fifteen").hide();
       $("#thirty").hide();
 
-
-      $("#selectcombo").change(function(){
-
-
-        if( $('#selectcombo').val()=='comboall'){
-         // alert("allcgh");
-        $("#all").show();
-        $("#seven").hide();
-        $("#fifteen").hide();
-        $("#thirty").hide();
-
-       }
-      if( $('#selectcombo').val()=='combo7'){
-        //alert("77");
-        $("#seven").show();
-        $("#all").hide();
-        $("#thirty").hide();
-        $("#fifteen").hide();
-
-       }
-       if( $('#selectcombo').val()=='combo15'){
-       // alert("15");
-       $("#seven").hide();
-        $("#all").hide();
-        $("#thirty").hide();
-        $("#fifteen").show();
-
-       }
-       if( $('#selectcombo').val()=='combo30'){
-        //alert("30");
-        $("#seven").hide();
-        $("#all").hide();
-        $("#thirty").show();
-        $("#fifteen").hide();
-
-       }
-
-      });
-
+      $("#selectcombo").change(function() {
       
+        if(this.value='combo7'){
+
+          alert('working7');
+        }          
+       
+      });
+     
      
     });
     </script>
@@ -535,7 +498,7 @@ $(document).ready(function () {
     // This must be a hyperlink
     $(".export").on('click', function (event) {
         // CSV
-        exportTableToCSV.apply(this, [$('.dvData'), 'PIA_Report.csv']);
+        exportTableToCSV.apply(this, [$('#dvData'), 'PIA_Report.csv']);
         
         // IF CSV, don't do event.preventDefault() or return false
         // We actually need this to be a typical hyperlink
